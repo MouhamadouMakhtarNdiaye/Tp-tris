@@ -37,7 +37,6 @@ function triBullesChrono ( $tab ) {
     $tf = microtime(true);
     return round(($tf - $td)*1000 , 2);
 }
-
 function triSelection ( $tab ) {
     $n = count ( $tab );
     for ($i = 0; $i < $n - 1; $i ++) {
@@ -55,6 +54,34 @@ function triSelection ( $tab ) {
     }
     return $tab;
 }
+
+function triSelectionCompte ( $tab ) {
+    $n = count ( $tab );
+    $compt = 0;
+    for ($i = 0; $i < $n - 1; $i ++) {
+    $indiceMin = $i;
+        for ($j = $i + 1; $j < $n; $j ++) {
+            $compt= $compt+1;
+            if ( $tab [$j] < $tab [ $indiceMin ]) {
+                $indiceMin = $j;
+            }
+        }
+        if ( $indiceMin !== $i) {
+            $temp = $tab [$i ];
+            $tab [$i] = $tab [ $indiceMin ];
+            $tab [ $indiceMin ] = $temp ;
+        }
+    }
+    return $compt;
+}
+
+function triSelectChrono ( $tab ) {
+    $td = microtime(true);
+    triSelection($tab);
+    $tf = microtime(true);
+    return round(($tf - $td)*1000 , 2);
+}
+
 
 
 
