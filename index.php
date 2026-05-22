@@ -28,3 +28,16 @@ $tailles = [100 , 500 , 1000 , 2000 , 5000 , 10000];
     $nbCompS = triSelectionCompte ( $tab );
     echo "n = $n : $nbCompS comparaisons , $times ms\n";
  }
+
+ $tab = [5, 3, 8, 1, 4];
+$trieI = triInsertion ( $tab );
+echo implode (', ', $trieI )."\n";
+
+$tailles = [100 , 500 , 1000 , 2000 , 5000 , 10000];
+
+ foreach ( $tailles as $n) {
+    $tab = range ($n , 1); // [n, n -1, ... , 2, 1] = cas defavorable
+    $times = triInsertChrono ( $tab );
+    $nbCompS = triInsersionCompte ( $tab );
+    echo "n = $n : $nbCompS comparaisons , $times ms\n";
+ }
